@@ -17,7 +17,7 @@ Global:
 # model architecture
 Arch:
   name: cae_base_patch16_224
-  class_num: 102
+  class_num: 1000
   drop_rate: 0.0
   drop_path_rate: 0.1
   attn_drop_rate: 0.0
@@ -39,8 +39,9 @@ Arch:
     enable_model_ema: False 
     model_ema_decay: 0.9999
     model_ema_force_cpu: False
-  pretrained: True
-
+  pretrained: './output/checkpoint-imagenet1k'
+  parameters_from: 'finetune' # 'pretrain' or 'finetune'
+  
 # loss function config for traing/eval process
 Loss:
   Train:

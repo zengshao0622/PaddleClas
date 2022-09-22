@@ -26,8 +26,11 @@ import paddle.nn as nn
 import paddle.nn.functional as F
 
 from ....utils.download import get_weights_path_from_url
+from ....utils.save_load import load_dygraph_pretrain, load_dygraph_pretrain_from_url
 
-MODEL_URLS = {
+MODEL_URLS = {"cae_base_patch16_224": "", "cae_large_patch16_224": ""}  # TO DO
+
+PRETRAINED_URLS = {
     "cae_base_patch16_224":
     "https://paddle-imagenet-models-name.bj.bcebos.com/dygraph/cae_base_patch16_224_pretrained.pdparams",
     "cae_large_patch16_224":
@@ -270,6 +273,8 @@ class Block(nn.Layer):
             self.gamma_1, self.gamma_2 = None, None
 
     def forward(self, x, rel_pos_bias=None):
+        import pdb
+        pdb.set_trace()
         if self.gamma_1 is None:
             x = x + self.drop_path(
                 self.attn(
@@ -308,6 +313,8 @@ class PatchEmbed(nn.Layer):
             bias_attr=True)
 
     def forward(self, x, **kwargs):
+        import pdb
+        pdb.set_trace()
         B, C, H, W = x.shape
         # FIXME look at relaxing size constraints
         assert H == self.img_size[0] and W == self.img_size[1], \
@@ -422,7 +429,8 @@ class VisionTransformer(nn.Layer):
         self.class_num = class_num
         self.num_features = self.embed_dim = embed_dim  # num_features for consistency with other models
         self.use_mean_pooling = use_mean_pooling
-
+        import pdb
+        pdb.set_trace()
         self.patch_embed = PatchEmbed(
             img_size=img_size,
             patch_size=patch_size,
@@ -565,7 +573,8 @@ class VisionTransformer(nn.Layer):
     def forward_features(self, x, is_train=True):
         x = self.patch_embed(x)
         batch_size, seq_len, _ = x.shape
-
+        import pdb
+        pdb.set_trace()
         cls_tokens = self.cls_token.expand(
             [batch_size, -1,
              -1])  # stole cls_tokens impl from Phil Wang, thanks
@@ -579,13 +588,14 @@ class VisionTransformer(nn.Layer):
                     [batch_size, -1, -1]).astype(x.dtype).clone().detach()
 
         x = self.pos_drop(x)
-
         rel_pos_bias = self.rel_pos_bias(
         ) if self.rel_pos_bias is not None else None
         for blk in self.blocks:
             x = blk(x, rel_pos_bias=rel_pos_bias)
 
         x = self.norm(x)
+        import pdb
+        pdb.set_trace()
         if self.fc_norm is not None:
             t = x[:, 1:, :]
             if self.lin_probe:
@@ -600,8 +610,11 @@ class VisionTransformer(nn.Layer):
             return x[:, 0]
 
     def forward(self, x, is_train=True):
+        x = paddle.Tensor(np.load('from_wyh/img.npy'))
         x = self.forward_features(x, is_train)
         x = self.head(x)
+        import pdb
+        pdb.set_trace()
         return x
 
 
@@ -626,6 +639,8 @@ def _enable_linear_eval(model):
 
 
 def _load_pretrained(pretrained,
+                     parameters_from,
+                     model_url,
                      pretrained_url,
                      model,
                      model_keys,
@@ -635,12 +650,25 @@ def _load_pretrained(pretrained,
                      use_ssld=False):
     if pretrained is False:
         pass
+    elif pretrained is True and parameters_from == "finetune":
+        load_dygraph_pretrain_from_url(model, model_url, use_ssld=use_ssld)
+        return
+    elif isinstance(pretrained, str) and parameters_from == "finetune":
+        # load_dygraph_pretrain(model, pretrained)
+        # return 
+        checkpoint = paddle.load(pretrained + ".pdparams")['model']
+        model.set_state_dict(checkpoint)
+        return
     elif pretrained is True:
         local_weight_path = get_weights_path_from_url(pretrained_url).replace(
             ".pdparams", "")
         checkpoint = paddle.load(local_weight_path + ".pdparams")
     elif isinstance(pretrained, str):
-        checkpoint = paddle.load(local_weight_path + ".pdparams")
+        checkpoint = paddle.load(pretrained + ".pdparams")
+    else:
+        raise RuntimeError(
+            "pretrained type is not available. Please use `string` or `boolean` type."
+        )
 
     checkpoint_model = None
     for model_key in model_keys.split('|'):
@@ -786,7 +814,10 @@ def _load_pretrained(pretrained,
     return
 
 
-def cae_base_patch16_224(pretrained=True, use_ssld=False, **kwargs):
+def cae_base_patch16_224(pretrained=True,
+                         parameters_from='pretrain',
+                         use_ssld=False,
+                         **kwargs):
     config = kwargs.copy()
     enable_linear_eval = config.pop('enable_linear_eval')
     model_keys = config.pop('model_key')
@@ -795,6 +826,8 @@ def cae_base_patch16_224(pretrained=True, use_ssld=False, **kwargs):
     rel_pos_bias = config.pop('rel_pos_bias')
     if pretrained in config:
         pretrained = config.pop('pretrained')
+        parameters_from = config.pop('parameters_from')
+    assert parameters_from in ["pretrain", "finetune"]
 
     model = VisionTransformer(
         patch_size=16,
@@ -812,7 +845,9 @@ def cae_base_patch16_224(pretrained=True, use_ssld=False, **kwargs):
 
     _load_pretrained(
         pretrained,
+        parameters_from,
         MODEL_URLS["cae_base_patch16_224"],
+        PRETRAINED_URLS["cae_base_patch16_224"],
         model,
         model_keys,
         model_ema_configs,
@@ -849,7 +884,9 @@ def cae_large_patch16_224(pretrained=True, use_ssld=False, **kwargs):
 
     _load_pretrained(
         pretrained,
+        parameters_from,
         MODEL_URLS["cae_large_patch16_224"],
+        PRETRAINED_URLS["cae_large_patch16_224"],
         model,
         model_keys,
         model_ema_configs,
