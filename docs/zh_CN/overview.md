@@ -87,141 +87,141 @@ jpg/image_05137.jpg 1
 
 <table border="1" >
 <tr>
-  <th align="left">文件夹名</th>
-  <th align="left">功能</th>
-  <th align="left">模块/字段/方法</th>
-  <th align="left">模块功能</th>
-  <th align="left">详细介绍</th>
+  <th align="left">文件夹名</td>
+  <th align="left">功能</td>
+  <th align="left">模块/字段/方法</td>
+  <th align="left">模块功能</td>
+  <th align="left">详细介绍</td>
 </tr>
 <!/ ------------------------------------------------>
 <tr>
-  <td rowspan="4" align="left">arch</td>
-  <td rowspan="4" align="left">模型组网代码</td>
-    <td>backbone</td>
-    <td>骨干网络模型代码</td>
-    <td> <a href="https://github.com/PaddlePaddle/PaddleClas/blob/release/2.5/docs/zh_CN/models/ImageNet1k/model_list.md">文档</a> </td>
+  <td rowspan="4" align="left">arch</th>
+  <td rowspan="4" align="left">模型组网代码</th>
+    <td>backbone</th>
+    <td>骨干网络模型代码</th>
+    <td> <a href="https://github.com/PaddlePaddle/PaddleClas/blob/release/2.5/docs/zh_CN/models/ImageNet1k/model_list.md">文档</a> </th>
   <tr>
     <td>gears</th>
-    <td>特征提取网络的Neck和Head部分代码</td>
-    <td> <a href="https://github.com/PaddlePaddle/PaddleClas/blob/release/2.5/docs/zh_CN/models/ImageNet1k/model_list.md">文档</a> </td>
+    <td>特征提取网络的Neck和Head部分代码</th>
+    <td> <a href="https://github.com/PaddlePaddle/PaddleClas/blob/release/2.5/docs/zh_CN/models/ImageNet1k/model_list.md">文档</a> </th>
   </tr>
   <tr>
     <td>distill</th>
-    <td>蒸馏相关的代码</td>
-    <td> <a href="https://github.com/PaddlePaddle/PaddleClas/blob/release/2.5/docs/zh_CN/models/ImageNet1k/model_list.md">文档</a> </td>
+    <td>蒸馏相关的代码</th>
+    <td> <a href="https://github.com/PaddlePaddle/PaddleClas/blob/release/2.5/docs/zh_CN/models/ImageNet1k/model_list.md">文档</a> </th>
   </tr>
   <tr>
     <td>slim</th>
-    <td>模型剪枝和量化相关代码</td>
+    <td>模型剪枝和量化相关代码</th>
     <td> <a href="https://github.com/PaddlePaddle/PaddleClas/blob/release/2.5/docs/zh_CN/models/ImageNet1k/model_list.md">文档</a> </th>
   </tr>
 </tr>
 <!/ ------------------------------------------------>
 <tr>
-  <td rowspan="6" align="left">configs</td>
-  <td rowspan="6" align="left">各种模型和方法的参考配置文件，该目录包含大量配置文件可供参考，省略各配置文件的详细介绍，仅介绍配置文件中的常用字段。</td>
-    <td>Global</td>
-    <td>该部分描述整体的训练配置，包括预训练权重、预训练模型、输出地址、训练设备、训练epoch数、输入图像大小等</td>
-    <td> - </td>
+  <td rowspan="6" align="left">configs</th>
+  <td rowspan="6" align="left">各种模型和方法的参考配置文件，该目录包含大量配置文件可供参考，省略各配置文件的详细介绍，仅介绍配置文件中的常用字段。</th>
+    <td>Global</th>
+    <td>该部分描述整体的训练配置，包括预训练权重、预训练模型、输出地址、训练设备、训练epoch数、输入图像大小等</th>
+    <td> - </th>
   <tr>
     <td>Arch</th>
-    <td>该部分描述模型的网络结构参数，构建模型时主要调用该部分参数。</td>
-    <td> <a href="https://github.com/PaddlePaddle/PaddleClas/blob/release/2.5/docs/zh_CN/models/ImageNet1k/model_list.md">文档</a> </td>
+    <td>该部分描述模型的网络结构参数，构建模型时主要调用该部分参数。</th>
+    <td> <a href="https://github.com/PaddlePaddle/PaddleClas/blob/release/2.5/docs/zh_CN/models/ImageNet1k/model_list.md">文档</a> </th>
   </tr>
   <tr>
     <td>Loss</th>
-    <td>该部分描述损失函数的参数配置，包括训练和验证损失，损失类型，损失权重等，构建损失函数时调用。</td>
-    <td> <a href="https://github.com/PaddlePaddle/PaddleClas/blob/release/2.5/docs/zh_CN/models/ImageNet1k/model_list.md">文档</a> </td>
+    <td>该部分描述损失函数的参数配置，包括训练和验证损失，损失类型，损失权重等，构建损失函数时调用。</th>
+    <td> <a href="https://github.com/PaddlePaddle/PaddleClas/blob/release/2.5/docs/zh_CN/models/ImageNet1k/model_list.md">文档</a> </th>
   </tr>
   <tr>
     <td>Optimizer</th>
-    <td>该部分描述优化器部分的参数配置，构建优化器时调用。</td>
+    <td>该部分描述优化器部分的参数配置，构建优化器时调用。</th>
     <td> <a href="https://github.com/PaddlePaddle/PaddleClas/blob/release/2.5/docs/zh_CN/models/ImageNet1k/model_list.md">文档</a> </th>
   </tr>
   <tr>
     <td>DataLoader</th>
-    <td>该部分描述dataloader部分参数配置，包括训练和验证过程的数据采样策略、数据增广方法等。</td>
+    <td>该部分描述dataloader部分参数配置，包括训练和验证过程的数据采样策略、数据增广方法等。</th>
     <td> <a href="https://github.com/PaddlePaddle/PaddleClas/blob/release/2.5/docs/zh_CN/models/ImageNet1k/model_list.md">文档</a> </th>
   </tr>
   <tr>
     <td>Metric</th>
-    <td>该部分描述评价指标，包括训练和验证过程选择的评价指标及其参数配置。</td>
+    <td>该部分描述评价指标，包括训练和验证过程选择的评价指标及其参数配置。</th>
     <td> <a href="https://github.com/PaddlePaddle/PaddleClas/blob/release/2.5/docs/zh_CN/models/ImageNet1k/model_list.md">文档</a> </th>
   </tr>
 </tr>
 <!/ ------------------------------------------------>
 <tr>
-  <td rowspan="4" align="left">data</td>
-  <td rowspan="4" align="left">数据处理相关代码</td>
-    <td>dataloader</td>
-    <td>包含针对不同数据集读取(dataset)和不同数据采样方式(sampler)的代码。</td>
-    <td> <a href="https://github.com/PaddlePaddle/PaddleClas/blob/release/2.5/docs/zh_CN/models/ImageNet1k/model_list.md">文档</a> </td>
+  <td rowspan="4" align="left">data</th>
+  <td rowspan="4" align="left">数据处理相关代码</th>
+    <td>dataloader</th>
+    <td>包含针对不同数据集读取(dataset)和不同数据采样方式(sampler)的代码。</th>
+    <td> <a href="https://github.com/PaddlePaddle/PaddleClas/blob/release/2.5/docs/zh_CN/models/ImageNet1k/model_list.md">文档</a> </th>
   <tr>
     <td>postprocess</th>
-    <td>对模型输出结果的后处理，输出对应的类别名、置信度、预测结果等</td>
-    <td> <a href="https://github.com/PaddlePaddle/PaddleClas/blob/release/2.5/docs/zh_CN/models/ImageNet1k/model_list.md">文档</a> </td>
+    <td>对模型输出结果的后处理，输出对应的类别名、置信度、预测结果等</th>
+    <td> <a href="https://github.com/PaddlePaddle/PaddleClas/blob/release/2.5/docs/zh_CN/models/ImageNet1k/model_list.md">文档</a> </th>
   </tr>
   <tr>
     <td>preprocess</th>
-    <td>对数据的预处理和数据增广方法。</td>
-    <td> <a href="https://github.com/PaddlePaddle/PaddleClas/blob/release/2.5/docs/zh_CN/models/ImageNet1k/model_list.md">文档</a> </td>
+    <td>对数据的预处理和数据增广方法。</th>
+    <td> <a href="https://github.com/PaddlePaddle/PaddleClas/blob/release/2.5/docs/zh_CN/models/ImageNet1k/model_list.md">文档</a> </th>
   </tr>
   <tr>
     <td>utils</th>
-    <td>其他常用函数</td>
+    <td>其他常用函数</th>
     <td> - </th>
   </tr>
 </tr>
 <!/ ------------------------------------------------>
 <tr>
-  <td rowspan="3" align="left">engine</td>
-  <td rowspan="3" align="left">模型训练和验证过程逻辑代码</td>
+  <td rowspan="3" align="left">engine</th>
+  <td rowspan="3" align="left">模型训练和验证过程逻辑代码</th>
     <td>evaluation</td>
-    <td>模型验证过程的不同方法：分类、检索等</td>
-    <td> <a href="https://github.com/PaddlePaddle/PaddleClas/blob/release/2.5/docs/zh_CN/models/ImageNet1k/model_list.md">文档</a> </td>
+    <td>模型验证过程的不同方法：分类、检索等</th>
+    <td> <a href="https://github.com/PaddlePaddle/PaddleClas/blob/release/2.5/docs/zh_CN/models/ImageNet1k/model_list.md">文档</a> </th>
   <tr>
     <td>train</th>
-    <td>模型训练过程的主要流程代码。</td>
-    <td> <a href="https://github.com/PaddlePaddle/PaddleClas/blob/release/2.5/docs/zh_CN/models/ImageNet1k/model_list.md">文档</a> </td>
+    <td>模型训练过程的主要流程代码。</th>
+    <td> <a href="https://github.com/PaddlePaddle/PaddleClas/blob/release/2.5/docs/zh_CN/models/ImageNet1k/model_list.md">文档</a> </th>
   </tr>
   <tr>
     <td>engine</th>
-    <td>模型训练、验证整体流程串联引擎工具代码，负责构建训练和验证过程的各个模块（如model、dataloader、loss等），并负责启动训练或验证流程。</td>
-    <td> <a href="https://github.com/PaddlePaddle/PaddleClas/blob/release/2.5/docs/zh_CN/models/ImageNet1k/model_list.md">文档</a> </td>
+    <td>模型训练、验证整体流程串联引擎工具代码，负责构建训练和验证过程的各个模块（如model、dataloader、loss等），并负责启动训练或验证流程。</th>
+    <td> <a href="https://github.com/PaddlePaddle/PaddleClas/blob/release/2.5/docs/zh_CN/models/ImageNet1k/model_list.md">文档</a> </th>
   </tr>
 </tr>
 <!/ ------------------------------------------------>
 <tr>
-  <td rowspan="2" align="left">loss</td>
-  <td rowspan="2" align="left">损失函数相关代码，该目录包含了大量损失函数可供选择，各函数详细介绍省略，仅简单介绍损失函数类中的两个方法。</td>
-    <td>_loss_method</td>
-    <td>定义构造不同损失函数的计算方法</td>
-    <td> <a href="https://github.com/PaddlePaddle/PaddleClas/blob/release/2.5/docs/zh_CN/models/ImageNet1k/model_list.md">文档</a> </td>
+  <td rowspan="2" align="left">loss</th>
+  <td rowspan="2" align="left">损失函数相关代码，该目录包含了大量损失函数可供选择，各函数详细介绍省略，仅简单介绍损失函数类中的两个方法。</th>
+    <td>_loss_method</th>
+    <td>定义构造不同损失函数的计算方法</th>
+    <td> <a href="https://github.com/PaddlePaddle/PaddleClas/blob/release/2.5/docs/zh_CN/models/ImageNet1k/model_list.md">文档</a> </th>
   <tr>
     <td>forward</th>
-    <td>定义计算损失函数的前向流程</td>
-    <td> <a href="https://github.com/PaddlePaddle/PaddleClas/blob/release/2.5/docs/zh_CN/models/ImageNet1k/model_list.md">文档</a> </td>
+    <td>定义计算损失函数的前向流程</th>
+    <td> <a href="https://github.com/PaddlePaddle/PaddleClas/blob/release/2.5/docs/zh_CN/models/ImageNet1k/model_list.md">文档</a> </th>
   </tr>
 </tr>
 <!/ ------------------------------------------------>
 <tr>
-  <td>metric</td>
-  <td>度量方法相关代码，该部分包含了各种度量方法，可通过设置配置文件的'Metric'字段进行选择和使用。</td>
-  <td>-</td>
-  <td>-</td>
-  <td>-</td>
+  <td>metric</th>
+  <td>度量方法相关代码，该部分包含了各种度量方法，可通过设置配置文件的'Metric'字段进行选择和使用。</th>
+  <td>-</th>
+  <td>-</th>
+  <td>-</th>
 </tr>
 <!/ ------------------------------------------------>
 <tr>
-  <td rowspan="2" align="left">optimizer</td>
-  <td rowspan="2" align="left">训练优化器和学习率策略相关代码</td>
-    <td>learning_rate.py</td>
-    <td>不同学习率策略的代码</td>
-    <td> <a href="https://github.com/PaddlePaddle/PaddleClas/blob/release/2.5/docs/zh_CN/models/ImageNet1k/model_list.md">文档</a> </td>
+  <td rowspan="2" align="left">optimizer</th>
+  <td rowspan="2" align="left">训练优化器和学习率策略相关代码</th>
+    <td>learning_rate.py</th>
+    <td>不同学习率策略的代码</th>
+    <td> <a href="https://github.com/PaddlePaddle/PaddleClas/blob/release/2.5/docs/zh_CN/models/ImageNet1k/model_list.md">文档</a> </th>
   <tr>
     <td>optimizer.py</th>
-    <td>不同训练优化器的代码</td>
-    <td> <a href="https://github.com/PaddlePaddle/PaddleClas/blob/release/2.5/docs/zh_CN/models/ImageNet1k/model_list.md">文档</a> </td>
+    <td>不同训练优化器的代码</th>
+    <td> <a href="https://github.com/PaddlePaddle/PaddleClas/blob/release/2.5/docs/zh_CN/models/ImageNet1k/model_list.md">文档</a> </th>
   </tr>
 </tr>
 <!/ ------------------------------------------------>
@@ -268,4 +268,3 @@ jpg/image_05137.jpg 1
 <a name="3.2"></a>
 
 ### 3.2 PP-ShiTu图像识别系统
-
