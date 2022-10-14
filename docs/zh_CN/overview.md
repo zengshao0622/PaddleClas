@@ -226,25 +226,25 @@ jpg/image_05137.jpg 1
 </tr>
 <!/ ------------------------------------------------>
 <tr>
-  <td rowspan="4" align="left">utils</td>
-  <td rowspan="4" align="left">该目录包含了其他常用的函数</td>
-    <td>logger</td>
-    <td> logger打印相关函数。定义了一个'_logger'，并在需要打印的位置import该文件。</td>
-    <td> <a href="https://github.com/PaddlePaddle/PaddleClas/blob/release/2.5/docs/zh_CN/models/ImageNet1k/model_list.md">文档</a> </td>
+  <td rowspan="4" align="left">utils</th>
+  <td rowspan="4" align="left">该目录包含了其他常用的函数</th>
+    <td>logger</th>
+    <td> logger打印相关函数。定义了一个'_logger'，并在需要打印的位置import该文件。</th>
+    <td> <a href="https://github.com/PaddlePaddle/PaddleClas/blob/release/2.5/docs/zh_CN/models/ImageNet1k/model_list.md">文档</a> </th>
   <tr>
     <td>config</th>
-    <td>关于配置文件的操作</td>
-    <td> - </td>
+    <td>关于配置文件的操作</th>
+    <td> - </th>
   </tr>
   <tr>
     <td>ema</th>
-    <td> Exponential Moving Average，指数移动平均，用于根据参数加权历史均值更新当前参数。</td>
-    <td> <a href="https://github.com/PaddlePaddle/PaddleClas/blob/release/2.5/docs/zh_CN/models/ImageNet1k/model_list.md">文档</a> </td>
+    <td> Exponential Moving Average，指数移动平均，用于根据参数加权历史均值更新当前参数。</th>
+    <td> <a href="https://github.com/PaddlePaddle/PaddleClas/blob/release/2.5/docs/zh_CN/models/ImageNet1k/model_list.md">文档</a> </th>
   </tr>
   <tr>
     <td>save_load</th>
-    <td>保存、加载模型参数等操作。</td>
-    <td> - </td>
+    <td>保存、加载模型参数等操作。</th>
+    <td> - </th>
   </tr>
 </tr>
 <!/ ------------------------------------------------>
