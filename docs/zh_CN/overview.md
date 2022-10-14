@@ -87,11 +87,11 @@ jpg/image_05137.jpg 1
 
 <table border="1" >
 <tr>
-  <th align="left">文件夹名</td>
-  <th align="left">功能</td>
-  <th align="left">模块/字段/方法</td>
-  <th align="left">模块功能</td>
-  <th align="left">详细介绍</td>
+  <th align="left">文件夹名</th>
+  <th align="left">功能</th>
+  <th align="left">模块/字段/方法</th>
+  <th align="left">模块功能</th>
+  <th align="left">详细介绍</th>
 </tr>
 <!/ ------------------------------------------------>
 <tr>
