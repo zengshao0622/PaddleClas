@@ -78,26 +78,26 @@ jpg/image_05137.jpg 1
 
 **configs**
 
-该文件夹存放了各种模型、数据集、方法训练的配置文件，可以直接调用训练或作为训练配置的参考，详细介绍可参考：[配置文件说明](training/config_description/basic.md)。以下简单介绍配置文件各字段功能：
+该文件夹包含PaddleClas提供的官方配置文件，包括了对应不同模型、方法的配置，可以直接调用训练或作为训练配置的参考，详细介绍可参考：[配置文件说明](training/config_description/basic.md)。以下简单介绍配置文件各字段功能：
 |字段名|功能|
 |:---:|:---:|
-|Global|该部分描述整体的训练配置，包括预训练权重、预训练模型、输出地址、训练设备、训练epoch数、输入图像大小等。|
-|Arch|该部分描述模型的网络结构参数，构建模型时主要调用该部分参数。|
-|Loss|该部分描述损失函数的参数配置，包括训练和验证损失，损失类型，损失权重等，构建损失函数时调用。|
-|Optimizer|该部分描述优化器部分的参数配置，构建优化器时调用。|
-|DataLoader|该部分描述dataloader部分参数配置，包括训练和验证过程的数据采样策略、数据增广方法等。|
-|Metric|该部分描述评价指标，包括训练和验证过程选择的评价指标及其参数配置。|
+|Global|该字段描述整体的训练配置，包括预训练权重、预训练模型、输出地址、训练设备、训练epoch数、输入图像大小等|
+|Arch|该字段描述模型的网络结构参数，构建模型时主要调用该部分参数|
+|Loss|该字段描述损失函数的参数配置，包括训练和验证损失函数，损失函数类型，损失函数权重等，构建损失函数时调用|
+|Optimizer|该字段描述优化器部分的参数配置，构建优化器时调用|
+|DataLoader|该字段描述数据处理部分参数配置，包括训练和验证过程的不同数据集读取方式、数据采样策略、数据增广方法等|
+|Metric|该字段描述评价指标，包括训练和验证过程选择的评价指标及其参数配置|
 
 **arch**
 
 该文件夹存放了与模型组网相关的代码，进行模型组网时根据配置文件中`Arch`字段的设置，选择对应的`骨干网络`、`Neck`、`Head`以及对应的参数设置，以下简单介绍各文件夹的作用：
 
-|文件夹|功能|详细介绍|
-|:---:|:---:|:---:|
-|backbone|PaddleClas实现的骨干网络模型，，`__init__.py`中可以查看所有模型情况。|[骨干网络预训练库](models/ImageNet1k/model_list.md)|
+|文件夹|功能|
+|:---:|:---:|
+|backbone|PaddleClas实现的骨干网络模型，，`__init__.py`中可以查看所有模型情况，具体骨干网络模型情况可参考：[骨干网络预训练库](models/ImageNet1k/model_list.md)|
 |gears|包含特征提取网络的 `Neck`和`Head`部分代码，在识别模型中用于对骨干网络提取的特征进行转换和处理。|-|
-|distill|包含知识蒸馏相关代码|[知识蒸馏介绍](algorithm_introduction/knowledge_distillation.md)、[知识蒸馏实战](training/advanced/knowledge_distillation.md)|
-|slim|包含模型量化相关代码|[算法介绍](algorithm_introduction/prune_quantization.md)、[使用介绍](advanced/prune_quantization.md)|
+|distill|包含知识蒸馏相关代码，详细内容可参考：[知识蒸馏介绍](algorithm_introduction/knowledge_distillation.md)和[知识蒸馏实战](training/advanced/knowledge_distillation.md)|
+|slim|包含模型量化相关代码，详细内容可参考[算法介绍](algorithm_introduction/prune_quantization.md)和[使用介绍](advanced/prune_quantization.md)|
 
 **data**
 
@@ -132,13 +132,12 @@ jpg/image_05137.jpg 1
 |evaluation|包含了验证过程代码，其中包括了不同的验证模式：分类、检索等|
 |engine.py|整体训练、验证的启动类，其功能是串联训练模块构建、调用训练和验证过程|
 
-
 **static**
 
 该目录包含了其他常用的函数，以下简单介绍其中几个文件作用：
 |文件|功能|
 |:---:|:---:|
-|logger|logger打印相关函数。定义了一个_logger，并在需要打印的位置import该文件。|
+|logger|logger打印相关函数。定义了一个全局变量`_logger`，并在需要打印的位置import该文件。|
 |ema|Exponential Moving Average，指数移动平均策略，用于根据参数加权历史均值更新当前参数。|
 |save_load|保存、加载模型参数等操作。|
 
@@ -160,7 +159,7 @@ jpg/image_05137.jpg 1
 <a name="2.1.6"></a>
 
 ### 2.1.6 test_tipc
-该目录包含了PaddleClas项目质量监控相关的脚本，提供了一键化测试各模型的各项性能指标，详细内容请参考：[飞桨训推一体全流程开发文档](../../test_tipc/README.md)
+该目录包含了PaddleClas项目质量监控相关的脚本，提供了一键化测试各模型的各项性能指标的功能，详细内容请参考：[飞桨训推一体全流程开发文档](../../test_tipc/README.md)
 
 <a name="2.2"></a>
 
@@ -172,7 +171,7 @@ jpg/image_05137.jpg 1
 <p>代码运行逻辑</p>
 </div>
 
-注意：该部分命令细节可参考[启动训练的快速体验文档](quick_start/quick_start_classification_new_user.md)，此处仅介绍整体运行逻辑，建议配合`快速体验文档`进行代码运行逻辑部分的理解。
+注意：此处仅介绍整体运行逻辑，建议配合[启动训练的快速体验文档](quick_start/quick_start_classification_new_user.md)进行代码运行逻辑部分的理解。
 
 <a name="2.2.1"></a>
 
@@ -185,9 +184,20 @@ jpg/image_05137.jpg 1
 ### 2.2.2 启动训练
 
 
-运行`./tools/train.py`启动训练，该启动脚本首先对配置文件进行解析并调用Engine类（`./ppcls/engine.py`）进行各模块构建，模块构建主要调用`./ppcls`文件夹下各模块的`build函数`(位于各模块的的`__init__.py`文件)以及配置文件中对应参数进行构建。
+运行`./tools/train.py`启动训练，该启动脚本首先对配置文件进行解析并调用Engine类（`./ppcls/engine.py`）进行各模块构建。
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/108920665/196380536-d9161e04-5d69-4e24-b57f-389918830cf5.png"/>
+</div>
+
+模块构建主要调用`./ppcls`文件夹下各模块的`build函数`(位于各模块的的`__init__.py`文件)以及配置文件中对应参数进行构建，如下图在Engine类中调用`build_dataloader()函数`构建dataloader。
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/108920665/196381203-4eb961ba-c554-49a5-87ce-a9649f96bbf7.png"/>
+</div>
 
 训练脚本`./tools/train.py`调用Engine类完成训练所需的各个模块构建后，会调用Engine类中的`train()`方法启动训练，该方法使用`.ppcls/engine/train/train.py`中的`train_epoch（）`函数进行模型训练。
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/108920665/196381856-28079311-3401-46e6-aaf2-db88c326de4c.png"/>
+</div>
 
 
 <a name="3."></a>
