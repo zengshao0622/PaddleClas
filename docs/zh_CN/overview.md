@@ -177,24 +177,24 @@ jpg/image_05137.jpg 1
 
 ### 2.2.1 编写配置文件
 
-设置训练过程中的配置参数和各个模块的构建参数，`./ppcls/configs`中包含了PaddleClas官方提供的参考配置文件。
+设置训练过程中的配置参数和各个模块的构建参数，[./ppcls/configs](../../ppcls/configs)中包含了PaddleClas官方提供的参考配置文件。
 
 <a name="2.2.2"></a>
 
 ### 2.2.2 启动训练
 
 
-运行`./tools/train.py`启动训练，该启动脚本首先对配置文件进行解析并调用Engine类（`./ppcls/engine.py`）进行各模块构建。
+运行[./tools/train.py](../../tools/train.py)启动训练，该启动脚本首先对配置文件进行解析并调用[Engine类](../../ppcls/engine/engine.py)进行各模块构建。
 <div align="center">
   <img src="https://user-images.githubusercontent.com/108920665/196380536-d9161e04-5d69-4e24-b57f-389918830cf5.png"/>
 </div>
 
-模块构建主要调用`./ppcls`文件夹下各模块的`build函数`(位于各模块的的`__init__.py`文件)以及配置文件中对应参数进行构建，如下图在Engine类中调用`build_dataloader()函数`构建dataloader。
+模块构建主要调用`./ppcls`文件夹下各模块的`build函数`(位于各模块的的`__init__.py`文件)以及配置文件中对应参数进行构建，如下图在Engine类中调用[build_dataloader()函数](../../ppcls/data/__init__.py)构建dataloader。
 <div align="center">
   <img src="https://user-images.githubusercontent.com/108920665/196381203-4eb961ba-c554-49a5-87ce-a9649f96bbf7.png"/>
 </div>
 
-训练脚本`./tools/train.py`调用Engine类完成训练所需的各个模块构建后，会调用Engine类中的`train()`方法启动训练，该方法使用`.ppcls/engine/train/train.py`中的`train_epoch（）`函数进行模型训练。
+训练脚本`./tools/train.py`调用Engine类完成训练所需的各个模块构建后，会调用Engine类中的`train()`方法启动训练，该方法使用[./ppcls/engine/train/train.py](../../ppcls/engine/train/train.py)中的`train_epoch（）函数`进行模型训练。
 <div align="center">
   <img src="https://user-images.githubusercontent.com/108920665/196381856-28079311-3401-46e6-aaf2-db88c326de4c.png"/>
 </div>
